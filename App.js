@@ -1,21 +1,21 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
-import image from './assets/btc.jpeg';
-import * as Sharing from 'expo-sharing';
+import image from './assets/coder.png';
+// import * as Sharing from 'expo-sharing';
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> Ready to Trade? </Text>
+      <Text style={styles.title}> Hello Coder!</Text>
       <Image 
       source={image} 
       style={ styles.image}
       />
       <TouchableOpacity
-      onPress={() => Alert.alert('Good choice!')}
+      onPress={() => Alert.alert('Good Trip!')}
       style= {styles.button}
       >
-        <Text> I´m Ready</Text>
+        <Text>You are ready? Click.</Text>
       </TouchableOpacity>
       
     </View>
