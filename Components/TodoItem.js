@@ -2,15 +2,15 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { colors } from '../StyleGlobal/Colors'
 
-const Item = ({item}) => {
+const TodoItem = ({todo}) => {
     return (
         <View style = {styles.itemContainer}>
-            <Text style = { styles.text }> { item.todo } </Text>
+            <Text style = { styles.text }> { todo.todo } </Text>
         </View>
     )
 } 
 
-export default Item
+export default TodoItem
 
 const styles = StyleSheet.create({
     itemContainer: {

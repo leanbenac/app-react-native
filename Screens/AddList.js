@@ -1,18 +1,23 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Text } from 'react-native';
+import { StyleSheet, View, TextInput, Text, FlatList } from 'react-native';
 import { useState } from 'react';
-import Item from '../Components/Item';
-import ButtonCustom from '../Components/Button' 
+import TodoItem from '../Components/TodoItem';
+import ButtonCustom from '../Components/Button';
 import { colors } from '../StyleGlobal/Colors';
 
 const AddList = () => {
     //guardo el dato con un estado + inicializo con un strin
-    const [input, setInput] = useState("")
-    const [todoList, setTodoList] = useState([])
+    const [input, setInput] = useState("");
+    const [todoList, setTodoList] = useState([]);
 
     const handleAdd = () => {
-        setTodoList([...todoList, {id: Date.now(), todo: input}])
+        if (input !== ""){
+        setTodoList([...todoList, {id: Date.now(), todo: input}]);
+        setInput ("");
+        }
     }
+
+    const renderTodo = ({item}) => <TodoItem todo = {item}></TodoItem>
 
     console.log(todoList);
     return (
@@ -33,12 +38,15 @@ const AddList = () => {
                 <Item item = {{ id: 4, todo: "Cerrar Fecha Private Techno"}}> </Item>
                 <Item item = {{ id: 5, todo: "Disfrutar el Viernes"}}> </Item> */}
                 {todoList.length !== 0 ?
-                todoList.map( item => {
-                    return <Item item = { item }  key = {item.id}/>
-                })
+                <FlatList
+                    data = {todoList}
+                    keyExtractor = {todo => todo.id}
+                    renderItem = { renderTodo }
+                />
                 :
                 <Text>No hay todos cargados</Text>
                 }
+                
             </View>
         </View>
     )
