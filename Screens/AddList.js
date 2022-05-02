@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput, Text } from 'react-native';
 import { useState } from 'react';
 import Item from '../Components/Item';
 import ButtonCustom from '../Components/Button' 
@@ -8,8 +8,13 @@ import { colors } from '../StyleGlobal/Colors';
 const AddList = () => {
     //guardo el dato con un estado + inicializo con un strin
     const [input, setInput] = useState("")
+    const [todoList, setTodoList] = useState([])
 
-    console.log(input);
+    const handleAdd = () => {
+        setTodoList([...todoList, {id: Date.now(), todo: input}])
+    }
+
+    console.log(todoList);
     return (
         <View style ={ styles.container }>
             <View style ={ styles.topContainer }>
@@ -19,14 +24,21 @@ const AddList = () => {
                 onChangeText = { setInput }
                 value = {input}
                 />
-                <ButtonCustom/>
+                <ButtonCustom onPress= { handleAdd }/>
             </View>
             <View style = {styles.itemList}>
-                <Item item = {{ id: 1, todo: "Estudiar React Native"}}> </Item>
+                {/* <Item item = {{ id: 1, todo: "Estudiar React Native"}}> </Item>
                 <Item item = {{ id: 2, todo: "Realizar Eventos"}}> </Item>
                 <Item item = {{ id: 3, todo: "Estudiar Inglés"}}> </Item>
                 <Item item = {{ id: 4, todo: "Cerrar Fecha Private Techno"}}> </Item>
-                <Item item = {{ id: 5, todo: "Disfrutar el Viernes"}}> </Item>
+                <Item item = {{ id: 5, todo: "Disfrutar el Viernes"}}> </Item> */}
+                {todoList.length !== 0 ?
+                todoList.map( item => {
+                    return <Item item = { item }  key = {item.id}/>
+                })
+                :
+                <Text>No hay todos cargados</Text>
+                }
             </View>
         </View>
     )

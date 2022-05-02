@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity} from 'react-native'
 import { colors } from '../StyleGlobal/Colors'
 
-const ButtonCustom = () => {
+const ButtonCustom = ({onPress}) => {
     return (
-        <TouchableOpacity style = {styles.button}>
+        <TouchableOpacity style = {styles.button} onPress={onPress}>
             <Text>
                 Add Todo
             </Text>
