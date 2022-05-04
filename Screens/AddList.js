@@ -1,14 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Text, FlatList } from 'react-native';
+import { StyleSheet, View, TextInput, Text, FlatList, Modal, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import TodoItem from '../Components/TodoItem';
 import ButtonCustom from '../Components/Button';
 import { colors } from '../StyleGlobal/Colors';
 
+
+
 const AddList = () => {
     //guardo el dato con un estado + inicializo con un strin
     const [input, setInput] = useState("");
     const [todoList, setTodoList] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [idSelected, setIdSelected] = useState ("")
 
     const handleAdd = () => {
         if (input !== ""){
@@ -16,9 +20,19 @@ const AddList = () => {
         setInput ("");
         }
     }
+    //funsion por referencia
+    const renderTodo = ({item}) => <TodoItem onPress = {handleModal} todo = {item}></TodoItem>
 
-    const renderTodo = ({item}) => <TodoItem todo = {item}></TodoItem>
+    const handleModal = (id) => {
+        setModalVisible(true);
+        setIdSelected(id);
+    }
 
+    const handleDelete = () => {
+        const todosFiltrados = todoList.filter(item => item.id !== idSelected);
+        setTodoList(todosFiltrados);
+        setModalVisible(false);
+    }
     console.log(todoList);
     return (
         <View style ={ styles.container }>
@@ -48,6 +62,25 @@ const AddList = () => {
                 }
                 
             </View>
+            <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              setModalVisible(!modalVisible);
+            }}
+            >
+            <View style = {styles.modalContainer}>
+                <TouchableOpacity onPress={()=>setModalVisible(false)}>
+                    <Text>
+                    X
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleDelete}>
+                    <Text>Eliminar todo</Text>
+                </TouchableOpacity>
+            </View>
+            </Modal>
         </View>
     )
 }
@@ -58,12 +91,14 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-around',
         alignItems: 'center',
+        height: '100%',
     },
     topContainer:{
         flexDirection:'row',
         justifyContent: 'space-around',
         alignItems: 'center',
         padding: 10,
+        flex: 0.2,
     },
     input: {
         borderRadius: 8,
@@ -73,7 +108,8 @@ const styles = StyleSheet.create({
         padding:6,
         paddingHorizontal: 8,
         backgroundColor: colors.cream,
-        color: colors.blue
+        color: colors.blue,
+
     },
     button: {
         backgroundColor: colors.green,
@@ -87,10 +123,19 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 10,
         color: colors.cream,
-        
+        flex: 0.8,
     },
+    modalContainer: {
+        marginTop: 200,
+        marginLeft:11,
+        height: 150, 
+        width: 350,
+        borderRadius: 8,
+        backgroundColor: colors.pastel,
 
-})
+    }
+
+})  
 
 
 

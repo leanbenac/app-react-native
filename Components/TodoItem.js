@@ -1,11 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors } from '../StyleGlobal/Colors'
 
-const TodoItem = ({todo}) => {
+const TodoItem = ({todo, onPress}) => {
     return (
         <View style = {styles.itemContainer}>
-            <Text style = { styles.text }> { todo.todo } </Text>
+            <TouchableOpacity onPress= { () => onPress (todo.id)}>
+                <Text style = { styles.text }> { todo.todo } </Text>
+            </TouchableOpacity>
         </View>
     )
 } 
