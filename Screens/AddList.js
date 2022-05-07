@@ -12,7 +12,7 @@ const AddList = () => {
     const [input, setInput] = useState("");
     const [todoList, setTodoList] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
-    const [idSelected, setIdSelected] = useState ("")
+    const [todoSelected, setTodoSelected] = useState ("")
 
     const handleAdd = () => {
         if (input !== ""){
@@ -23,16 +23,24 @@ const AddList = () => {
     //funsion por referencia
     const renderTodo = ({item}) => <TodoItem onPress = {handleModal} todo = {item}></TodoItem>
 
-    const handleModal = (id) => {
+    const handleModal = (todoSelected) => {
         setModalVisible(true);
-        setIdSelected(id);
+        setTodoSelected(todoSelected);
     }
 
     const handleDelete = () => {
-        const todosFiltrados = todoList.filter(item => item.id !== idSelected);
+        const todosFiltrados = todoList.filter(item => item.id !== todoSelected.id);
         setTodoList(todosFiltrados);
         setModalVisible(false);
     }
+
+    const handleEdit = (text) => {
+        const todoToEdit = todoList.find(todo => todo.id === todoSelected.id);
+        // const todoListFiltered = todoList.filter(todo => todo.id !== todoSelected.id)
+        todoToEdit.todo = text
+        setTodoList([...todoList])
+    }
+
     console.log(todoList);
     return (
         <View style ={ styles.container }>
@@ -76,6 +84,13 @@ const AddList = () => {
                     X
                     </Text>
                 </TouchableOpacity>
+
+                <TextInput
+                style = { styles.input }
+                onChangeText = { handleEdit}
+                value = {todoSelected.todo}
+                />
+                
                 <TouchableOpacity onPress={handleDelete}>
                     <Text>Eliminar todo</Text>
                 </TouchableOpacity>

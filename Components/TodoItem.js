@@ -5,7 +5,7 @@ import { colors } from '../StyleGlobal/Colors'
 const TodoItem = ({todo, onPress}) => {
     return (
         <View style = {styles.itemContainer}>
-            <TouchableOpacity onPress= { () => onPress (todo.id)}>
+            <TouchableOpacity onPress= { () => onPress (todo)}>
                 <Text style = { styles.text }> { todo.todo } </Text>
             </TouchableOpacity>
         </View>
