@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { colors } from '../StyleGlobal/Colors'
+import { colors } from '../../StyleGlobal/Colors'
 
 const TodoItem = ({todo, onPress}) => {
     return (
