@@ -32,8 +32,8 @@ const MyModal = ({
             value = {todoSelected.todo}
             />
             
-            <TouchableOpacity onPress={handleDelete}>
-                <Text>Eliminar todo</Text>
+            <TouchableOpacity onPress={ handleDelete }>
+                <Text>Eliminar</Text>
             </TouchableOpacity>
         </View>
         </Modal>

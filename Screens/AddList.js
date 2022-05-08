@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useState } from 'react';
 import Header from '../Components/Header';
-import List from '../Components/List';
+import List from '../Components/List/Index'
 import MyModal from '../Components/MyModal';
 
 

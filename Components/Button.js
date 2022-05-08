@@ -6,7 +6,7 @@ const ButtonCustom = ({onPress}) => {
     return (
         <TouchableOpacity style = {styles.button} onPress={onPress}>
             <Text>
-                Add Todo
+                +
             </Text>
         </TouchableOpacity>
     )

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View, Text } from "react-native";
 import { colors } from "../StyleGlobal/Colors";
 import ButtonCustom from "./Button";
 
@@ -15,15 +15,20 @@ const Header = ({handleAdd}) => {
     }
 
   return (
+
+    <>
+    <Text style={styles.title} > Upcoming Tasks !</Text>
+
     <View style={styles.topContainer}>
       <TextInput
         style={styles.input}
-        placeholder="Add todo"
+        placeholder="Agrega tus tareas pendientes"
         onChangeText={setInput}
         value={input}
       />
       <ButtonCustom onPress={ ()=> handleAddAux() } />
     </View>
+    </>
   )
 };
 
@@ -37,14 +42,19 @@ const styles = StyleSheet.create({
         padding: 10,
         flex: 0.2,
     },
+    title: {
+      flexDirection: 'column',
+      fontSize: 18
+    },
     input: {
         borderRadius: 8,
         borderWidth: 2,
         width: 200,
         marginRight: 10,
         padding:6,
-        paddingHorizontal: 8,
+        paddingHorizontal: 2,
         backgroundColor: colors.cream,
         color: colors.blue,
     },
+
 });

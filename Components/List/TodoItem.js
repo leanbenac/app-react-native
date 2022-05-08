@@ -2,11 +2,17 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors } from '../../StyleGlobal/Colors'
 
-const TodoItem = ({todo, onPress}) => {
+const TodoItem = ({todo, onPress, handleDelete}) => {
+
     return (
         <View style = {styles.itemContainer}>
             <TouchableOpacity onPress= { () => onPress (todo)}>
                 <Text style = { styles.text }> { todo.todo } </Text>
+
+                <TouchableOpacity onPress ={ handleDelete }>
+                    <Text>Eliminar</Text>
+                </TouchableOpacity>
+
             </TouchableOpacity>
         </View>
     )
