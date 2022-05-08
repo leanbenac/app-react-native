@@ -17,8 +17,10 @@ export default ButtonCustom
 const styles = StyleSheet.create({
     button: {
         backgroundColor: colors.green,
-        borderRadius: 10,
-        padding:7,
+        borderRadius: 5,
+        padding:8,
+        paddingRight:15,
+        paddingLeft: 15,
         borderWidth: 2,
     },
 })

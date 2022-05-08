@@ -6,11 +6,11 @@ const TodoItem = ({todo, onPress, handleDelete}) => {
 
     return (
         <View style = {styles.itemContainer}>
-            <TouchableOpacity onPress= { () => onPress (todo)}>
+            <TouchableOpacity style = {styles.containerText} onPress= { () => onPress (todo)}>
                 <Text style = { styles.text }> { todo.todo } </Text>
 
-                <TouchableOpacity onPress ={ handleDelete }>
-                    <Text>Eliminar</Text>
+                <TouchableOpacity style={ styles.buttonX } onPress ={ handleDelete }>
+                    <Text style = { styles.textX } >X</Text>
                 </TouchableOpacity>
 
             </TouchableOpacity>
@@ -21,16 +21,29 @@ const TodoItem = ({todo, onPress, handleDelete}) => {
 export default TodoItem
 
 const styles = StyleSheet.create({
-    itemContainer: {
-        backgroundColor: colors.cream,
-        padding: 10,
-        borderRadius: 10,
-        margin: 5,
-        
+    containerText: { 
+        flexDirection:'row',
+        justifyContent: 'space-between',
     },
     text: {
         color: colors.blue,
         fontSize: 18,
- 
-    }
+        backgroundColor: colors.cream,
+        padding: 10,
+        borderRadius: 5,
+        margin: 5,
+        width:'75%',
+    },
+    buttonX: {
+        backgroundColor: 'red',
+        borderRadius: 5,
+        paddingTop:10,
+        paddingRight:15,
+        paddingLeft: 15,
+        margin: 5,
+    },
+    textX: {
+        fontSize:20,
+        color: 'white',
+    } 
 })

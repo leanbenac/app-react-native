@@ -17,12 +17,12 @@ const Header = ({handleAdd}) => {
   return (
 
     <>
-    <Text style={styles.title} > Upcoming Tasks !</Text>
+    <Text style={styles.title} > To Do App 2002 !</Text>
 
     <View style={styles.topContainer}>
       <TextInput
         style={styles.input}
-        placeholder="Agrega tus tareas pendientes"
+        placeholder="What you have to do ?"
         onChangeText={setInput}
         value={input}
       />
@@ -44,17 +44,17 @@ const styles = StyleSheet.create({
     },
     title: {
       flexDirection: 'column',
-      fontSize: 18
+      fontSize: 18,
+      marginTop: 30,
     },
     input: {
-        borderRadius: 8,
+        borderRadius: 5,
         borderWidth: 2,
-        width: 200,
+        width: 250,
         marginRight: 10,
-        padding:6,
+        padding:8,
         paddingHorizontal: 2,
         backgroundColor: colors.cream,
         color: colors.blue,
     },
-
 });

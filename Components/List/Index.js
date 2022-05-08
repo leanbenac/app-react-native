@@ -27,7 +27,7 @@ const List = ({handleModal, todoList}) => {
             renderItem = { renderTodo }
         />
         :
-        <Text>No hay todos cargados</Text>
+        <Text>You should do something !</Text>
         }
         
     </View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.green,
         width: '95%',
         padding: 20,
-        borderRadius: 10,
+        borderRadius: 8,
         color: colors.cream,
         flex: 0.8,
     },
