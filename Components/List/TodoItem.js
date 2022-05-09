@@ -1,22 +1,32 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 import { colors } from '../../StyleGlobal/Colors'
 
 const TodoItem = ({todo, onPress, handleDelete}) => {
+
+        // const handleDeleteItem = ({todoList,todoSelected, setTodoList }) => {
+    //     const itemFiltrado = todoList.filter(
+    //         (item) => item.id !== todoSelected.id
+    //     )
+    //     setTodoList(itemFiltrado);
+    // }
 
     return (
         <View style = {styles.itemContainer}>
             <TouchableOpacity style = {styles.containerText} onPress= { () => onPress (todo)}>
                 <Text style = { styles.text }> { todo.todo } </Text>
 
-                <TouchableOpacity style={ styles.buttonX } onPress ={ handleDelete }>
-                    <Text style = { styles.textX } >X</Text>
-                </TouchableOpacity>
-
+                <TouchableWithoutFeedback>
+                    <TouchableOpacity style={ styles.buttonX } onPress ={ handleDelete }>
+                        <Text style = { styles.textX } >X</Text>
+                    </TouchableOpacity>
+                </TouchableWithoutFeedback>
             </TouchableOpacity>
         </View>
     )
 } 
+ 
+
 
 export default TodoItem
 

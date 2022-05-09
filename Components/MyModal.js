@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Modal,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import {Modal,StyleSheet,Text,TextInput,TouchableOpacity,View,} from "react-native";
 import { colors } from "../StyleGlobal/Colors";
 
 const MyModal = ({
